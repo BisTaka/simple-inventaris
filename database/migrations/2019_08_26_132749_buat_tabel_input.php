@@ -13,7 +13,28 @@ class BuatTabelInput extends Migration
      */
     public function up()
     {
-        
+        Schema::create('inven_masuk', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('kode_barang');
+            $table->string('nama_barang');
+            $table->integer('harga');
+            $table->integer('jumlah_masuk');
+            $table->string('satuan');
+            $table->string('keterangan_masuk');
+            $table->timestamps();
+        });
+
+        Schema::create('inven_keluar', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('kode_barang');
+            $table->string('nama_barang');
+            $table->integer('harga');
+            $table->integer('jumlah_keluar');
+            $table->string('satuan');
+            $table->string('keterangan_keluar');
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -23,6 +44,7 @@ class BuatTabelInput extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('inven_masuk');
+        Schema::dropIfExists('inven_keluar');
     }
 }
